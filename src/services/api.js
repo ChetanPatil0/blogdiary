@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const API_BASE_URL ="http://localhost:5000/api";
-export const MEDIA_BASE_URL = "http://localhost:5000"
+export const API_BASE_URL ="https://turfadda-backend.onrender.com/api";
+export const MEDIA_BASE_URL = "https://turfadda-backend.onrender.com"
 
 export const api = axios.create({
-   baseURL: "http://localhost:5000/api",
+   baseURL: API_BASE_URL || "https://turfadda-backend.onrender.com/api",
   headers: {
     'Content-Type': 'application/json',
   },
