@@ -111,7 +111,7 @@ export const sendWelcomeEmail = async (email, userName) => {
     subject: 'Welcome to BlogDiary!',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333;">Welcome to BlogDiary! 🎉</h2>
+        <h2 style="color: #333;">Welcome to BlogDiary!</h2>
         <p>Hi ${userName},</p>
         <p>Your account is now verified. Start creating amazing blogs!</p>
         <p>
@@ -137,10 +137,10 @@ export const sendBlogPublishedEmail = async (email, userName, blogTitle) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: '📝 Blog Published - BlogDiary',
+    subject: 'Blog Published - BlogDiary',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333;">Blog Published Successfully! 📝</h2>
+        <h2 style="color: #333;">Blog Published Successfully!</h2>
         <p>Hi ${userName},</p>
         <p>Your blog <strong>"${blogTitle}"</strong> has been published!</p>
         <p>Your readers can now find and enjoy your blog.</p>
@@ -167,10 +167,10 @@ export const sendBlogUpdatedEmail = async (email, userName, blogTitle) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: '✏️ Blog Updated - BlogDiary',
+    subject: 'Blog Updated - BlogDiary',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333;">Blog Updated! ✏️</h2>
+        <h2 style="color: #333;">Blog Updated!</h2>
         <p>Hi ${userName},</p>
         <p>Your blog <strong>"${blogTitle}"</strong> has been updated successfully.</p>
         <p>The changes are now live for your readers.</p>
@@ -192,10 +192,10 @@ export const sendBlogDeletedEmail = async (email, userName, blogTitle) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: '🗑️ Blog Deleted - BlogDiary',
+    subject: 'Blog Deleted - BlogDiary',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333;">Blog Deleted 🗑️</h2>
+        <h2 style="color: #333;">Blog Deleted</h2>
         <p>Hi ${userName},</p>
         <p>Your blog <strong>"${blogTitle}"</strong> has been deleted.</p>
         <p>This action cannot be undone.</p>
@@ -216,10 +216,10 @@ export const sendLikeNotificationEmail = async (email, userName, liker, blogTitl
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: `❤️ ${liker.fullName} liked your blog - BlogDiary`,
+    subject: `${liker.fullName} liked your blog - BlogDiary`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333;">New Like! ❤️</h2>
+        <h2 style="color: #333;">New Like!/h2>
         <p>Hi ${userName},</p>
         <p><strong>${liker.fullName}</strong> liked your blog <strong>"${blogTitle}"</strong></p>
         <p>Keep writing great content!</p>
@@ -240,10 +240,10 @@ export const sendCommentNotificationEmail = async (email, userName, commenter, b
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: `💬 ${commenter.fullName} commented on your blog - BlogDiary`,
+    subject: `${commenter.fullName} commented on your blog - BlogDiary`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #333;">New Comment! 💬</h2>
+        <h2 style="color: #333;">New Comment!</h2>
         <p>Hi ${userName},</p>
         <p><strong>${commenter.fullName}</strong> commented on your blog <strong>"${blogTitle}"</strong></p>
         <p>Check out their comment!</p>
