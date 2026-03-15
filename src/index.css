@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+:root {
+  --color-dark-bg: #0f172a;
+  --color-dark-card: #1e293b;
+  --color-dark-border: #334155;
+
+  --color-primary-200: #bfdbfe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-800: #1e40af;
+}
+
+@theme {
+  --color-dark-bg: var(--color-dark-bg);
+  --color-dark-card: var(--color-dark-card);
+  --color-dark-border: var(--color-dark-border);
+
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-800: var(--color-primary-800);
+}
