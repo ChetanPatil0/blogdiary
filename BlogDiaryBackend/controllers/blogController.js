@@ -350,33 +350,55 @@ export const likeBlog = async (req, res) => {
   }
 };
 
+
 export const getBlogById = async (req, res) => {
   try {
     const { id } = req.params;
     const { userId } = req.query;
+      console.log('user id ',req.query.userId,'test',userId)
 
-    const blog = await Blog.findByIdAndUpdate(id, { new: true })
-      .populate("author", "fullName email profileImage isVerified")
+    const blog = await Blog.findById(id)
+      .populate("author", "fullName username email profileImage isVerified")
       .populate("comments.author", "fullName username profileImage isVerified");
 
-    if (!blog) return sendError(res, 404, "Blog not found");
+    if (!blog) {
+      return sendError(res, 404, "Blog not found");
+    }
 
-    // if (
-    //   blog.status === "draft" &&
-    //   (!req.user || blog.author.toString() !== req.user._id.toString())
-    // ) {
-    //   return sendError(res, 403, "This blog is not published yet");
-    // }
+  
+    if (blog.status === "draft") {
+
+      if (!userId) {
+        return sendError(res, 403, "This blog is not published yet");
+      }
+
+      const requestingUser = await User.findById(userId).select("isAdmin");
+
+      if (!requestingUser) {
+        return sendError(res, 403, "Invalid user");
+      }
+
+     
+      
+      const isAuthor = blog.author._id.toString() === userId.toString();
+      const isAdmin  = requestingUser.isAdmin === true;
+
+
+      if (!isAuthor && !isAdmin) {
+        return sendError(res, 403, "This blog is not published yet");
+      }
+    }
 
     const blogWithDate = addDisplayDate([blog])[0];
 
     const isLiked = userId ? blogWithDate.likes.includes(userId) : false;
     blogWithDate.isLiked = isLiked;
 
-    sendSuccess(res, 200, blogWithDate, "Blog fetched successfully");
+    return sendSuccess(res, 200, blogWithDate, "Blog fetched successfully");
+
   } catch (error) {
-    console.error(error);
-    sendError(res, 500, "Failed to fetch blog");
+    console.error("Get blog error:", error);
+    return sendError(res, 500, "Failed to fetch blog");
   }
 };
 
