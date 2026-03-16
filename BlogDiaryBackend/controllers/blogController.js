@@ -361,12 +361,12 @@ export const getBlogById = async (req, res) => {
 
     if (!blog) return sendError(res, 404, "Blog not found");
 
-    if (
-      blog.status === "draft" &&
-      (!req.user || blog.author.toString() !== req.user._id.toString())
-    ) {
-      return sendError(res, 403, "This blog is not published yet");
-    }
+    // if (
+    //   blog.status === "draft" &&
+    //   (!req.user || blog.author.toString() !== req.user._id.toString())
+    // ) {
+    //   return sendError(res, 403, "This blog is not published yet");
+    // }
 
     const blogWithDate = addDisplayDate([blog])[0];
 
